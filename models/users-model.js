@@ -8,13 +8,13 @@ const Users = {
       process.env.SECRET_KEY
     ).toString();
     return connection.query(
-      `INSERT INTO users (firstname, lastname, email, password, postcode) VALUES ('${createUser.first_name}', '${createUser.last_name}', '${createUser.email}', '${password}', '${createUser.post_code}')`,
+      `INSERT INTO secondstorey.users (firstname, lastname, email, password, postcode) VALUES ('${createUser.first_name}', '${createUser.last_name}', '${createUser.email}', '${password}', '${createUser.post_code}')`,
       callback
     );
   },
   loginUser: (loginUser, callback) => {
     return connection.query(
-      `SELECT * FROM users WHERE email = '${loginUser.email}'`,
+      `SELECT * FROM secondstorey.users WHERE email = '${loginUser.email}'`,
       callback
     );
   },
