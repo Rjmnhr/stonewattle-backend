@@ -31,7 +31,7 @@ const DomainInsights = {
         query += `AND category ='Metropolitian'`;
       }
     }
-
+    console.log(query);
     return connection.query(query, callback);
   },
 };
