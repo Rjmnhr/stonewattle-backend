@@ -24,13 +24,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //DB config
- 
+
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connected to MySQL database");
-}); 
-
-
+});
 
 app.use("/api/otp", otpAuth);
 app.use("/api/suburbs", suburbRoutes);

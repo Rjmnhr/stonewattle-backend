@@ -63,4 +63,8 @@ router.post("/verify-otp", (req, res) => {
   }
 });
 
+router.get("/confirm", (req, res) => {
+  res.send("Api is working");
+});
+
 module.exports = router;
