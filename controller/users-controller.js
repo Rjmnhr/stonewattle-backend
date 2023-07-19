@@ -22,10 +22,13 @@ const UsersController = {
 
       if (!user) return res.status(401).json("Wrong username or password");
 
-      const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
-      const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
-      if (originalPassword !== req.body.password)
-        return res.status(401).json("Wrong username or password");
+      // const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
+      // const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
+      // if (originalPassword !== req.body.password)
+      //   return res.status(401).json("Wrong username or password");
+
+      if (user.password !== req.body.password)
+        return res.status(400).json("Wrong username or password");
 
       const accessToken = jwt.sign(
         {
