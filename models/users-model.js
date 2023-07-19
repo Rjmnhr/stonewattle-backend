@@ -8,7 +8,7 @@ const Users = {
     //   process.env.SECRET_KEY
     // ).toString();
     return connection.query(
-      `INSERT INTO users (firstname, lastname, email, password, postcode) VALUES ('${createUser.first_name}', '${createUser.last_name}', '${createUser.email}', '${CreateUser.password}', '${createUser.post_code}')`,
+      `INSERT INTO users (firstname, lastname, email, password, postcode) VALUES ('${createUser.first_name}', '${createUser.last_name}', '${createUser.email}', '${createUser.password}', '${createUser.post_code}')`,
       callback
     );
   },
