@@ -30,16 +30,17 @@ const UsersController = {
       if (user.password !== req.body.password)
         return res.status(400).json("Wrong username or password");
 
-      const accessToken = jwt.sign(
-        {
-          id: user.id,
-        },
-        process.env.SECRET_KEY,
-        { expiresIn: "5d" }
-      );
+      // const accessToken = jwt.sign(
+      //   {
+      //     id: user.id,
+      //   },
+      //   process.env.SECRET_KEY,
+      //   { expiresIn: "5d" }
+      // );
 
-      const { password, ...other } = user;
-      res.status(200).json({ ...other, accessToken });
+      // const { password, ...other } = user;
+      // res.status(200).json({ ...other, accessToken });
+      res.status(200).json("logged successfully");
     });
   },
 };
