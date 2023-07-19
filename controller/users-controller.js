@@ -40,7 +40,7 @@ const UsersController = {
 
       // const { password, ...other } = user;
       // res.status(200).json({ ...other, accessToken });
-      res.status(200).json({ status: 200 });
+      res.status(200).json(user);
     });
   },
 };
