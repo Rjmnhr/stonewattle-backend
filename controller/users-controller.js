@@ -22,25 +22,22 @@ const UsersController = {
 
       if (!user) return res.status(401).json("Wrong username or password");
 
-      // const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
-      // const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
-      // if (originalPassword !== req.body.password)
-      //   return res.status(401).json("Wrong username or password");
+      const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
+      const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
 
-      if (user.password !== req.body.password)
-        return res.status(400).json("Wrong username or password");
+      if (originalPassword !== req.body.password)
+        return res.status(401).json("Wrong username or password");
 
-      // const accessToken = jwt.sign(
-      //   {
-      //     id: user.id,
-      //   },
-      //   process.env.SECRET_KEY,
-      //   { expiresIn: "5d" }
-      // );
+      const accessToken = jwt.sign(
+        {
+          id: user.id,
+        },
+        "secondstorey",
+        { expiresIn: "5d" }
+      );
 
-      // const { password, ...other } = user;
-      // res.status(200).json({ ...other, accessToken });
-      res.status(200).json(user);
+      const { password, ...other } = user;
+      res.status(200).json({ ...other, accessToken });
     });
   },
 };

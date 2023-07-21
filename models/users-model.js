@@ -3,10 +3,10 @@ const CryptoJS = require("crypto-js");
 
 const Users = {
   createUser: (createUser, callback) => {
-    // const password = CryptoJS.AES.encrypt(
-    //   createUser.password,
-    //   process.env.SECRET_KEY
-    // ).toString();
+    const password = CryptoJS.AES.encrypt(
+      createUser.password,
+      "secondstorey"
+    ).toString();
     return connection.query(
       `INSERT INTO users (firstname, lastname, email, password, postcode) VALUES ('${createUser.first_name}', '${createUser.last_name}', '${createUser.email}', '${createUser.password}', '${createUser.post_code}')`,
       callback
