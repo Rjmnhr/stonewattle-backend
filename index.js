@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const Cors = require("cors");
 const bodyParser = require("body-parser");
-const connection = require("./mySQL-DB");
+const pool = require("./mySQL-DB");
 const suburbRoutes = require("./routes/suburbs-router");
 const domainRoutes = require("./routes/domain-router");
 const otpAuth = require("./routes/otp-auth");
@@ -24,11 +24,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //DB config
-
-connection.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to MySQL database");
-});
+pool
+  .getConnection()
+  .then((connection) => {
+    console.log("Connected to MySQL database");
+    connection.release();
+  })
+  .catch((err) => {
+    console.error("Error connecting to MySQL database:", err.message);
+  });
 
 app.use("/api/otp", otpAuth);
 app.use("/api/suburbs", suburbRoutes);

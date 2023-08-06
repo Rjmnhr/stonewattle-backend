@@ -3,21 +3,18 @@ const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
 const UsersController = {
-  createUser: (req, res) => {
-    Users.createUser(req.body, (err, data) => {
-      if (err) {
-        res.status(500).json({ message: err.message });
-      } else {
-        res.status(200).json(data);
-      }
-    });
+  createUser: async (req, res) => {
+    try {
+      const data = await Users.createUser(req.body);
+      res.status(200).json(data);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: err });
+    }
   },
-  loginUser: (req, res) => {
-    Users.loginUser(req.body, (err, data) => {
-      if (err) {
-        throw err;
-      }
-
+  loginUser: async (req, res) => {
+    try {
+      const data = await Users.loginUser(req.body);
       const user = data[0];
 
       if (!user) return res.status(401).json("Wrong username or password");
@@ -32,13 +29,16 @@ const UsersController = {
         {
           id: user.id,
         },
-        "secondstorey",
+        process.env.SECRET_KEY,
         { expiresIn: "5d" }
       );
 
       const { password, ...other } = user;
       res.status(200).json({ ...other, accessToken });
-    });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
   },
 };
 
