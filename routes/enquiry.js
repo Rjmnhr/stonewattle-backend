@@ -16,7 +16,7 @@ router.post("/send-enquiry", (req, res) => {
   // Set up email data
   const mailOptions = {
     from: "rjmnhr9551@gmail.com",
-    to: "renjithcm.renju@gmail.com",
+    to: "richanahata@yahoo.co.in",
     subject: `2nd Storey enquiry from ${first_name}  ${last_name}`,
     text: `Dear 2nd Storey,
     
