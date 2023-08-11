@@ -70,6 +70,22 @@ const UsersController = {
       res.status(500).json(err);
     }
   },
+  changePassword: async (req, res) => {
+    try {
+      const password = req.body.password;
+      const email = req.body.email;
+      const existingUser = (await Users.loginUser({ email: email }))[0];
+
+      const data = await Users.ChangePassword({
+        id: existingUser.ID,
+        password: password,
+      });
+      res.status(200).json(data);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: err });
+    }
+  },
 };
 
 module.exports = UsersController;

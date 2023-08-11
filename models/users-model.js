@@ -85,6 +85,24 @@ const Users = {
       connection.release(); // Release the connection back to the pool
     }
   },
+  ChangePassword: async (ChangePassword) => {
+    const connection = await pool.getConnection();
+    try {
+      const password = CryptoJS.AES.encrypt(
+        ChangePassword.password,
+        process.env.SECRET_KEY
+      ).toString();
+      let query = `UPDATE users SET password = "${password}" WHERE id = "${ChangePassword.id}"`;
+      const [rows] = await connection.query(query);
+      return rows;
+    } catch (err) {
+      // Handle errors here
+      console.error(err);
+      throw err;
+    } finally {
+      connection.release(); // Release the connection back to the pool
+    }
+  },
 };
 
 module.exports = Users;
