@@ -9,6 +9,7 @@ const otpAuth = require("./routes/otp-auth");
 const userRoutes = require("./routes/users-route");
 const tokenRoutes = require("./routes/verify-token");
 const enquiryRoutes = require("./routes/enquiry");
+const aiModelRoutes = require("./routes/linkedin-ai");
 const mysql = require("mysql2");
 const ssh2 = require("ssh2");
 
@@ -41,5 +42,6 @@ app.use("/api/domain", domainRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/token", tokenRoutes);
 app.use("/api/enquiry", enquiryRoutes);
+app.use("/api/ai", aiModelRoutes);
 
 app.listen(port, () => console.log(`server is up on ${port}`));
