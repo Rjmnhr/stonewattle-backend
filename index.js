@@ -10,8 +10,9 @@ const userRoutes = require("./routes/users-route");
 const tokenRoutes = require("./routes/verify-token");
 const enquiryRoutes = require("./routes/enquiry");
 const aiModelRoutes = require("./routes/linkedin-ai");
-const mysql = require("mysql2");
-const ssh2 = require("ssh2");
+const linkedInRoutes = require("./routes/linkedin-route");
+
+const TrackDataRoutes = require("./routes/track-data-router");
 
 //App config
 const app = express();
@@ -43,5 +44,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/token", tokenRoutes);
 app.use("/api/enquiry", enquiryRoutes);
 app.use("/api/ai", aiModelRoutes);
+app.use("/api/linkedin", linkedInRoutes);
 
+app.use("/api/track-data", TrackDataRoutes);
 app.listen(port, () => console.log(`server is up on ${port}`));

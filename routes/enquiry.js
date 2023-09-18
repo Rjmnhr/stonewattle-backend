@@ -6,17 +6,19 @@ router.post("/send-enquiry", (req, res) => {
 
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    host: "smtp-mail.outlook.com",
+    port: 587,
+    secure: false,
     auth: {
-      user: "rjmnhr9551@gmail.com",
-      pass: "kkrmsdqpdusjmwbs",
+      user: "info@2ndstorey.com",
+      pass: "secondstorey",
     },
   });
 
   // Set up email data
   const mailOptions = {
-    from: "rjmnhr9551@gmail.com",
-    to: "richanahata@yahoo.co.in",
+    from: "info@2ndstorey.com",
+    to: "indradeep.mazumdar@gmail.com",
     subject: `2nd Storey enquiry from ${first_name}  ${last_name}`,
     text: `Dear 2nd Storey,
     
