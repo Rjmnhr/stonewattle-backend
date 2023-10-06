@@ -4,7 +4,7 @@ const DomainInsights = {
   filter: async (filter, callback) => {
     const connection = await pool.getConnection();
     try {
-      let query = `SELECT DISTINCT domain_insights.suburb_id ,domain_insights.postcode, state_code, domain_insights.suburb_name, max_bedrooms , current_vacancy_rate,
+      let query = `SELECT DISTINCT domain_insights.suburb_id ,domain_insights.postcode, state_code, domain_insights.suburb_name, current_vacancy_rate,
       family,rental_population, ratings, growth_population, country_of_birth_australia,employment_worked_unemployed,median_weekly_income_family
       ,CAST(great_for_schools AS UNSIGNED) AS great_for_schools_int, CAST(great_for_medical_facilities AS UNSIGNED) AS great_for_medical_facilities_int,
        CAST(great_for_public_transport AS UNSIGNED) AS great_for_public_transport_int,latitude,longitude,all_crimes,
