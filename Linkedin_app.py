@@ -113,7 +113,7 @@ def main(arguments_json):
   
    
     json_input = arguments_json
-
+    print(json_input)
   
     try:
         data_dict = json.loads(json_input)
@@ -140,6 +140,7 @@ if __name__ == '__main__':
     if arguments:
         arguments_json = arguments[0]  # The JSON string is the first argument
         arguments_dict = json.loads(arguments_json)  # Deserialize the JSON string to a dictionary
+        print(arguments_dict)
        
     else:
         print("No arguments received.")

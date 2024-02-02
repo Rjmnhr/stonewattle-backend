@@ -10,7 +10,7 @@ const userRoutes = require("./routes/users-route");
 const tokenRoutes = require("./routes/verify-token");
 const enquiryRoutes = require("./routes/enquiry");
 const aiModelRoutes = require("./routes/linkedin-ai");
-const linkedInRoutes = require("./routes/linkedin-route");
+const linkedInRoutes = require("./routes/linkedin-routes");
 
 const TrackDataRoutes = require("./routes/track-data-router");
 

@@ -2,16 +2,17 @@ const { spawn } = require("child_process");
 const router = require("express").Router();
 
 router.post("/run-model", (req, res) => {
-  const inputData = JSON.stringify(req.body);
-  console.log(inputData);
+  const inputData = JSON.stringify(req.body)
+  ;
+  console.log("sending data", inputData);
 
-  const pythonProcess = spawn("python", ["./Linkedin_app.py", inputData]);
+  const pythonProcess = spawn("python3", ["./Linkedin_app.py", inputData]);
 
   let outputData = "";
 
   pythonProcess.stdout.on("data", (data) => {
     const output = data.toString();
-    outputData += output;
+    // outputData += output;
     // Process the output if needed
     // console.log("nodejs output", output);
   });
@@ -27,7 +28,7 @@ router.post("/run-model", (req, res) => {
       res.status(200).json({
         success: true,
         message: "Python script executed successfully",
-        output: outputData,
+        output: output,
       });
     } else {
       // Error in execution
