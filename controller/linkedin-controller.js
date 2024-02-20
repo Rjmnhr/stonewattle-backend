@@ -71,6 +71,7 @@ const LinkedinController = {
       res.status(500).json(err);
     }
   },
+
   educationalOutput: async (req, res) => {
     try {
       const responseData = await LinkedinModel.educationalOutput(req.body);
@@ -104,6 +105,16 @@ const LinkedinController = {
   getColleges: async (req, res) => {
     try {
       const responseData = await LinkedinModel.getColleges(req.body);
+
+      return res.status(200).json(responseData);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
+  getCompanyBased: async (req, res) => {
+    try {
+      const responseData = await LinkedinModel.getCompanyBased(req.body);
 
       return res.status(200).json(responseData);
     } catch (err) {

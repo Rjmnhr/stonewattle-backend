@@ -4,6 +4,7 @@ const router = require("express").Router();
 function verify(req, res, next) {
   const authHeader = req.headers.token;
 
+
   if (authHeader) {
     const token = authHeader.split(" ")[1];
 
