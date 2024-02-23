@@ -49,7 +49,7 @@ const LinkedinModel = {
         WHERE '${additional_degree}' IN (mapped_digree_0, mapped_digree_1,mapped_digree_2, mapped_digree_3)) 
         AS row_counts_additional_degree,
         (SELECT COUNT(*) FROM Linkedin_data
-        WHERE '${ug_tier}' IN (tier_mapping_institute_0, tier_mapping_institute_1,tier_mapping_institute_2, tier_mapping_institute_3)) 
+        WHERE '${ug_tier}' IN (tier_mapping_institute_0)) 
         AS row_counts_ug_tier,
   
         (SELECT COUNT(*) FROM Linkedin_data
@@ -76,7 +76,7 @@ const LinkedinModel = {
   
          (SELECT COUNT(*) FROM Linkedin_data 
          WHERE '${ug_degree}' IN (mapped_digree_0, mapped_digree_1,mapped_digree_2, mapped_digree_3)
-         AND '${ug_tier}' IN (tier_mapping_institute_0, tier_mapping_institute_1,tier_mapping_institute_2, tier_mapping_institute_3)) 
+         AND '${ug_tier}' IN (tier_mapping_institute_0)) 
          AS row_counts_ug_degree_and_ug_tier;`;
       } else {
         query = `SELECT
